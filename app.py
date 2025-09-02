@@ -1,7 +1,6 @@
 # Streamlit Implementation
 # Step 1: Import Libraries and Load the Model
 import streamlit as st
-import numpy as np
 import tensorflow as tf
 from tensorflow.keras.datasets import imdb
 from tensorflow.keras.preprocessing import sequence
@@ -24,7 +23,7 @@ def decode_review(encoded_review):
 # Function to preprocess user input
 def preprocess_text(text):
   words = text.lower().split()
-  encoded_review = [word_index.get(word, 2) + 3 for word in words]
+  encoded_review = [word_index.get(word, 2) for word in words]
   padded_review = sequence.pad_sequences([encoded_review], maxlen=500)
   return padded_review
 
@@ -47,5 +46,6 @@ if st.button('Predict'):
     st.write(f'Score: {score}')
   else:
     st.warning('Please enter a review')
+
 
 
