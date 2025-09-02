@@ -1,5 +1,6 @@
 # Streamlit Implementation
 # Step 1: Import Libraries and Load the Model
+import streamlit as st
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.datasets import imdb
@@ -35,8 +36,6 @@ def predict_sentiment(review):
   return sentiment, prediction[0][0]
 
 # Streamlit App
-import streamlit as st
-
 st.title('IMDB Movie Review Sentiment Analysis')
 st.write('Enter a movie review to classify it as positive or negative')
 user_input = st.text_input('Enter Review') # User Input
@@ -48,4 +47,5 @@ if st.button('Predict'):
     st.write(f'Score: {score}')
   else:
     st.warning('Please enter a review')
+
 
